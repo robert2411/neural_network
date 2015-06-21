@@ -13,10 +13,10 @@ import java.util.Vector;
  */
 public class Neuron {
 
-	public Neuron(int numOutputs, int myIndex){
+	public Neuron(int numOutputs, int myIndex, Random rand){
 		this.myIndex = myIndex;
 		for(int i = 0; i < numOutputs; i++){
-			outputWeights.add(new Connection());
+			outputWeights.add(new Connection(rand));
 		}
 	}
 	
@@ -149,7 +149,7 @@ public class Neuron {
 	 * 0.2 medium learner
 	 * 1.0 reckless learner
 	 */
-	static private double eta = 0.15; 
+	static private double eta = 0.2;//0.15; 
 	
 	/**
 	 * alpha - momentum
@@ -158,11 +158,10 @@ public class Neuron {
 	 * 0.0 no momentum
 	 * 0.5 moderate momentum
 	 */
-	static private double alpha = 0.5; 
+	static private double alpha = 0.8; 
 	////////////////////////////////////////////////////////////////////////////////////////////////
 	protected class Connection{
-		public Connection(){
-			Random rand = new Random();
+		public Connection(Random rand){
 			weight = rand.nextDouble();
 			deltaWeight = rand.nextDouble();
 		}

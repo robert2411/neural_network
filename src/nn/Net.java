@@ -3,6 +3,7 @@
  */
 package nn;
 
+import java.util.Random;
 import java.util.Vector;
 
 /**
@@ -13,6 +14,7 @@ public class Net {
 
 	public Net(Vector<Integer> topology){
 		int numLayers = topology.size();
+		Random rand = new Random();
 		for (int layerNum = 0; layerNum < numLayers; layerNum++){
 			if (debug) System.out.println("added layer number "+layerNum);
 			layers.add(new Layer());
@@ -21,7 +23,7 @@ public class Net {
 			
 			for (int neuronNum = 0; neuronNum <= topology.get(layerNum); neuronNum++){
 				if (debug) System.out.println("added neuron number "+layerNum+"."+neuronNum);
-				layers.lastElement().add(new Neuron(numOutputs, neuronNum));
+				layers.lastElement().add(new Neuron(numOutputs, neuronNum, rand));
 			}
 			
 			/* force the bias output val to 1.0 */ 

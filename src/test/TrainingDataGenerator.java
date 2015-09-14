@@ -29,8 +29,8 @@ public class TrainingDataGenerator {
 		try {
 			Random rand = new Random();
 			writer = new PrintWriter("test.txt", "UTF-8");
-			writer.println("topology: 2 8 1");
-			for (int i = 0; i < 30000; i++){
+			writer.println("topology: 2 4 1");
+			for (int i = 0; i < 1000; i++){
 				Options option;
 				switch(rand.nextInt(4)){
 				case 0:
